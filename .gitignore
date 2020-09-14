@@ -37,3 +37,9 @@ vignettes/*.pdf
 
 # R Environment Variables
 .Renviron
+
+# figures and results directory
+figures/*.png
+results/*.rds
+stan-models/*.rds
+*.DS_Store
