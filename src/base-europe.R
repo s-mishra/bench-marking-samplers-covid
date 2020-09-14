@@ -27,11 +27,11 @@ df_data <-
   select(DATE, country_name, starts_with('npi'), cases_new, deaths_new)
 # Commandline options and parsing
 option_list <- list(
-  make_option(c("--debug", "-D"),action="store_true", default=TRUE,help="Whether running in DEBUG MODE [default \"%default\"]"),
-  make_option(c("--full", "-F"),action="store_true", default=FALSE,help="Whether running in FULL MODE [default \"%default\"]. If both Debug and Full are passed code will run in debug mode."),
+  make_option(c("--debug", "-D"),action="store_true", default=FALSE,help="Whether running in DEBUG MODE [default \"%default\"]"),
+  make_option(c("--full", "-F"),action="store_true", default=FALSE,help="Whether running in FULL MODE [default \"%default\"]. If both Debug and Full are passed code will run in FULL mode."),
   make_option(c("--stanFile"),action="store", default="base",help="Which Stan file to use [default \"%default\"]"),
   make_option(c("--nchains"),action="store", type="integer", default=4,help="Number of Chains [default \"%default\"]"),
-  make_option(c("--iter"),action="store", type="integer", default=1000,help="Number of iterations [default \"%default\"]"),
+  make_option(c("--iter"),action="store", type="integer", default=1500,help="Number of iterations [default \"%default\"]"),
   make_option(c("--thin"),action="store", type="integer", default=1,help="Amount of thinning of results [default \"%default\"]"),
   make_option(c("--formula_full"),action="store", default="~ -1 + Stringency",  help="Features to be used for full pooling [default \"%default\"]"),
   make_option(c("--formula_macro"),action="store", default="~ -1",  help="Features to be used for macro level pooling [default \"%default\"]"),
@@ -92,10 +92,10 @@ if(JOBID == "")
   JOBID = as.character(abs(round(rnorm(1) * 1000000)))
 print(sprintf("Jobid = %s",JOBID))
 
-if(DEBUG) {
-  fit = sampling(m,data=stan_data,iter=100,warmup=50,chains=2)
-} else if (FULL) {
+if(FULL) {
   fit = sampling(m,data=stan_data,iter=opt$iter,warmup=500,chains=opt$nchains,thin=opt$thin,control = list(adapt_delta = 0.95, max_treedepth = 20))
+} else if (DEBUG) {
+  fit = sampling(m,data=stan_data,iter=100,warmup=50,chains=2)
 } else { 
   fit = sampling(m,data=stan_data,iter=800,warmup=400,chains=2,thin=1,control = list(adapt_delta = 0.90, max_treedepth = 15))
 }   

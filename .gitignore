@@ -43,3 +43,4 @@ figures/*.png
 results/*.rds
 stan-models/*.rds
 *.DS_Store
+Rplots.pdf

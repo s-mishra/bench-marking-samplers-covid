@@ -11,9 +11,9 @@ Rscript src/base-usa.R -F
 ```
 To run the code from rstudio
 ```
-# source europe script, make sure you make debug false and full true in options
+# source europe script, make sure you make full true in options
 source base-europe.R
-# source usa script, make sure you make debug false and full true in options
+# source usa script, make sure you make full true in options
 source base-usa.R
 ```
 ## Notice
