@@ -19,7 +19,7 @@ source base-usa.R
 ## Notice
  :warning: This code shouldn't be used for inferring any estimates. It is mainly for benchmarking purposes. For actual code look [here](https://github.com/ImperialCollegeLondon/covid19mode)
 
-:warning: This code is released with no support. We try our best to look at issues and pull request but can't help people with setup most of the time. We have docker images and conda environment file to make it easy for you to get started with the setup, any other approach assumes user can handle their computing environments appropriately.
+:warning: This code is released with no support. We try our best to look at issues and pull request but can't help people with setup most of the time.
 
 :warning: This model is in active development and so parameter name and behaviours, and output file formats will change without notice.
 
