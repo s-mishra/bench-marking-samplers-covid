@@ -60,6 +60,7 @@ df_data <-
   df_data %>%
   filter(country_name %in% regions) %>%
   rename(Date = DATE, Cases = cases_new, Deaths = deaths_new, Stringency = npi_stringency_index) %>%
+  filter(Date <= as.Date('2020-05-05')) %>%
   mutate(Stringency = Stringency / 100) %>%
   na.locf(Stringency = na.locf(Stringency)) %>% # for days we don't have stringency just copy old
   mutate(Cases = case_when( Cases <= 0 ~ 0, TRUE ~ Cases), Deaths = case_when( Deaths <= 0 ~ 0, TRUE ~ Deaths)) # just make neagtive data as zero
